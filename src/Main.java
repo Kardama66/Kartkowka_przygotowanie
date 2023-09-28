@@ -262,31 +262,28 @@ public class StatystykiDanych {
 
 //TODO liczby pierwsze i sito erastotenesa
 
-public class SitoEratostenesa {
-
-    public static void main(String[] args) {
-        int zakres = 1000;
-        boolean[] jestLiczbaPierwsza = new boolean[zakres + 1];
-
-        // Inicjalizacja tablicy
-        for (int i = 2; i <= zakres; i++) {
-            jestLiczbaPierwsza[i] = true;
+public class LiczbyPierwsze {
+    // Metoda do sprawdzania, czy liczba jest liczbą pierwszą
+    static boolean czyPierwsza(int liczba) {
+        if (liczba <= 1) {
+            return false;
         }
-
-        // Wykreślanie liczb złożonych
-        for (int i = 2; i * i <= zakres; i++) {
-            if (jestLiczbaPierwsza[i]) {
-                for (int j = i * i; j <= zakres; j += i) {
-                    jestLiczbaPierwsza[j] = false;
-                }
+        for (int i = 2; i <= Math.sqrt(liczba); i++) {
+            if (liczba % i == 0) {
+                return false;
             }
         }
+        return true;
+    }
 
-        // Wyświetlanie liczb pierwszych
-        System.out.println("Liczby pierwsze mniejsze niż " + zakres + ":");
-        for (int i = 2; i <= zakres; i++) {
-            if (jestLiczbaPierwsza[i]) {
-                System.out.print(i + " ");
+    public static void main(String[] args) {
+        int[] tablica = {2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        System.out.println("Liczby pierwsze w tablicy:");
+
+        for (int liczba : tablica) {
+            if (czyPierwsza(liczba)) {
+                System.out.println(liczba);
             }
         }
     }
@@ -320,5 +317,89 @@ public class SprawdzPalindrom {
 }
 
 
- */
+
+
+    //TODO ciąg fibonacciego
+
+    public class Fibonacci {
+    public static void main(String[] args) {
+        int n = 10; // Liczba elementów ciągu do wygenerowania
+
+        System.out.println("Ciąg Fibonacciego dla " + n + " elementów:");
+
+        int[] fibonacci = new int[n];
+
+        // Pierwsze dwa elementy ciągu Fibonacciego
+        fibonacci[0] = 0;
+        fibonacci[1] = 1;
+
+        // Generowanie kolejnych elementów ciągu
+        for (int i = 2; i < n; i++) {
+            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+        }
+
+        // Wyświetlanie ciągu
+        for (int i = 0; i < n; i++) {
+            System.out.print(fibonacci[i] + " ");
+        }
+    }
+}
+
+//TODO ile razy sie powtarza liczba
+import java.util.HashMap;
+
+public class LiczbaNajczesciejWystepujaca {
+    public static void main(String[] args) {
+        int[] tablica = {1, 2, 3, 2, 2, 3, 4, 5, 5, 5};
+
+        // Tworzenie mapy do zliczania wystąpień liczb
+        HashMap<Integer, Integer> mapa = new HashMap<>();
+
+        // Iterowanie po tablicy i zliczanie wystąpień
+        for (int liczba : tablica) {
+            if (mapa.containsKey(liczba)) {
+                mapa.put(liczba, mapa.get(liczba) + 1);
+            } else {
+                mapa.put(liczba, 1);
+            }
+        }
+
+        // Znajdowanie liczby najczęściej występującej
+        int najczestszaLiczba = -1;
+        int najwiecejWystapien = 0;
+
+        for (int liczba : mapa.keySet()) {
+            int wystapienia = mapa.get(liczba);
+            if (wystapienia > najwiecejWystapien) {
+                najczestszaLiczba = liczba;
+                najwiecejWystapien = wystapienia;
+            }
+        }
+
+        // Wyświetlanie wyniku
+        System.out.println("Liczba najczęściej występująca to: " + najczestszaLiczba);
+        System.out.println("Liczba wystąpień: " + najwiecejWystapien);
+    }
+}
+//TODO liczenie znaków w tekscie
+public class LiczenieZnakow {
+    public static void main(String[] args) {
+        String tekst = "To jest przykładowy tekst, w którym chcemy policzyć wystąpienia litery 'a'.";
+
+        char znakDoSprawdzenia = 'a';
+        int licznik = 0;
+
+        for (int i = 0; i < tekst.length(); i++) {
+            if (tekst.charAt(i) == znakDoSprawdzenia) {
+                licznik++;
+            }
+        }
+
+        System.out.println("Liczba wystąpień znaku '" + znakDoSprawdzenia + "' w tekście: " + licznik);
+    }
+}
+
+
+
+    */
     }
