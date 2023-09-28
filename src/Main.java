@@ -7,10 +7,14 @@ public class Main {
     public static void main(String[] args) {
         //Piękna notateczka do kartkóweczki
 
-        //TODO rzutowanie i typy danych
+        //TODO rzutowanie i typy danych, losowanie liczb z zakresu <100,150>
 
         //sout - wypisywanie
-        int losowanaLiczba = (int)(Math.random()*100+1);
+        int losowanaLiczba = (int)(Math.random()*51)+100;
+        while(losowanaLiczba != 100) {
+            losowanaLiczba = (int)(Math.random()*51)+100;
+        }
+        System.out.println(losowanaLiczba);
         //int w nawiasie to rzutowanie zeby byla taka zmienna
         /* typy proste
         char - znakowy
@@ -21,14 +25,14 @@ public class Main {
         //TODO Odczytuwanie z klawiatury
 
         //Scanner z intem
-        Scanner klawiatura = new Scanner(System.in);
-        int wpisanaLiczba = klawiatura.nextInt();
-        System.out.println("wpisano liczbę: "+wpisanaLiczba);
-
-        //Scanner z stringiem
-        Scanner klawiatura2 = new Scanner(System.in);
-        String wpisanyciag = klawiatura2.next();
-        System.out.println("wpisano ciag: "+wpisanyciag);
+//        Scanner klawiatura = new Scanner(System.in);
+//        int wpisanaLiczba = klawiatura.nextInt();
+//        System.out.println("wpisano liczbę: "+wpisanaLiczba);
+//
+//        //Scanner z stringiem
+//        Scanner klawiatura2 = new Scanner(System.in);
+//        String wpisanyciag = klawiatura2.next();
+//        System.out.println("wpisano ciag: "+wpisanyciag);
 
         //TODO if i ten dziwny if
 
